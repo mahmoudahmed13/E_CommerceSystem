@@ -1,6 +1,6 @@
-﻿using E_Commerce_Domain.Common;
+﻿using E_Commerce.Domain.Common;
 
-namespace E_Commerce_Domain.Entities.Products
+namespace E_Commerce.Domain.Entities.Products
 {
     public class ProductType : BaseEntity<int>
     {
