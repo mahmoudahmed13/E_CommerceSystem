@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: e079ad15-ef63-43fc-8ccc-a3ebfe7c527e
+
+localResources:
+  specs:
+    - ../E_Commerce.API/obj/Debug/net8.0/EndpointInfo/E_Commerce.API.json
