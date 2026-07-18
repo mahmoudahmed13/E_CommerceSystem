@@ -1,0 +1,17 @@
+﻿using E_Commerce.Application.Common;
+using E_Commerce.Domain.Entities.Products;
+
+namespace E_Commerce.Application.Specifications
+{
+    internal class ProductCountSpecifications : BaseSpecification<Product, int>
+    {
+        public ProductCountSpecifications(ProductQueryParams queryParams)
+            : base(p => (!queryParams.BrandId.HasValue || p.BrandId == queryParams.BrandId.Value)
+            && (!queryParams.TypeId.HasValue || p.TypeId == queryParams.TypeId.Value)
+            && (string.IsNullOrWhiteSpace(queryParams.SearchValue) || p.Name.ToLower().Contains(queryParams.SearchValue.ToLower())))
+
+        {
+
+        }
+    }
+}

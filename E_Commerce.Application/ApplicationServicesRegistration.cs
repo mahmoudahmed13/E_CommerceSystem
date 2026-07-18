@@ -13,7 +13,8 @@ namespace E_Commerce.Application
             // Register application services here
             services.AddAutoMapper(c => { }, typeof(ApplicationServicesRegistration).Assembly);
             services.AddScoped<IProductService, ProductService>();
-            
+            services.AddScoped<IBasketService, BasketService>();
+
             // Register AutoMapper profiles from the current assembly
             return services;
         }
