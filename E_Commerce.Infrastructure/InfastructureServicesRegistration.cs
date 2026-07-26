@@ -11,6 +11,9 @@ using E_Commerce.Infrastructure.Identity.Entities;
 using Microsoft.AspNetCore.Identity;
 using E_Commerce.Application.Contracts;
 using E_Commerce.Infrastructure.Identity.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace E_Commerce.Infrastructure
 {
@@ -47,6 +50,30 @@ namespace E_Commerce.Infrastructure
                 .AddEntityFrameworkStores<StoreIdentityDbContext>();
 
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<ITokenService, TokenService>();
+
+            var jwtSetting = configuration.GetSection("JWT").Get<JwtSetting>()
+                ?? throw new InvalidOperationException("Jwt Settings is missing");
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(opt =>
+            {
+                opt.SaveToken = true;
+                opt.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = jwtSetting.Issuer, // لازم يطابق الـ issuer اللي بعتناه
+                    ValidateAudience = true,
+                    ValidAudience = jwtSetting.Audience,  // لازم يطابق الـ audience
+                    ValidateLifetime = true,   // يتأكد إن exp لسه ساري
+                    RequireExpirationTime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting.SecretKey)),
+                    ClockSkew = TimeSpan.Zero
+                }; 
+            });
 
             return services;
         }

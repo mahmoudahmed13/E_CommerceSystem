@@ -1,4 +1,4 @@
-﻿namespace E_Commerce.Application.DTOs.Identity
+﻿namespace E_Commerce.Application.DTOs.Authentications
 {
     public class UserDto
     {

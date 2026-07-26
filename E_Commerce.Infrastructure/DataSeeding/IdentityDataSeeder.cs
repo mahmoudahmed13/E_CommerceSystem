@@ -3,7 +3,6 @@ using E_Commerce.Infrastructure.Identity.Data;
 using E_Commerce.Infrastructure.Identity.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace E_Commerce.Infrastructure.DataSeeding
@@ -18,7 +17,7 @@ namespace E_Commerce.Infrastructure.DataSeeding
         public IdentityDataSeeder(StoreIdentityDbContext dbContext,
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            ILogger<IdentityDataSeeder> logger) 
+            ILogger<IdentityDataSeeder> logger)
         {
             _dbContext = dbContext;
             _userManager = userManager;
