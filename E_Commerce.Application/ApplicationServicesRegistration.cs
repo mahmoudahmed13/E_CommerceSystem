@@ -16,6 +16,7 @@ namespace E_Commerce.Application
             services.AddScoped<IBasketService, BasketService>();
             services.AddSingleton<ICacheService, CacheService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IOrderService, OrderService>();
             // Register AutoMapper profiles from the current assembly
             return services;
         }

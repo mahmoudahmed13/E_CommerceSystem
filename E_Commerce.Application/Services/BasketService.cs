@@ -17,7 +17,7 @@ namespace E_Commerce.Application.Services
             _basketRepository = basketRepository;
             _mapper = mapper;
         }
-        public async Task<Result<BasketDto>> CreateOrUpdateAsync(BasketDto basket, TimeSpan? TLV = null, CancellationToken ct = default)
+        public async Task<Result<BasketDto>> CreateOrUpdateAsync(BasketDto basket, TimeSpan? TLV, CancellationToken ct = default)
         {
             var customerBasket = _mapper.Map<CustomerBasket>(basket);
             var basketResult = await _basketRepository.CreateOrUpdateBasketAsync(customerBasket, TLV, ct);

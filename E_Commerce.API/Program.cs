@@ -47,7 +47,6 @@ namespace E_Commerce.API
 
             app.UseAuthorization();
 
-
             app.MapControllers();
 
             app.Run();
