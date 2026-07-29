@@ -1,4 +1,4 @@
-﻿namespace E_Commerce_Domain.Common
+﻿namespace E_Commerce.Domain.Common
 {
     public abstract class BaseEntity<TKey>
     {
