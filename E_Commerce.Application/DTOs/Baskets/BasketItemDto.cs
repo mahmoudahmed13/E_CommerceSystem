@@ -10,7 +10,7 @@ namespace E_Commerce.Application.DTOs.Baskets
         public string ProductName { get; set; } = default!;
         public string PictureUrl { get; set; } = default!;
         [Range(1, double.MaxValue)]
-        decimal Price { get; set; }
+        public decimal Price { get; set; }
         [Range(1, 50)]
         public int Quantity { get; set; }
     }
